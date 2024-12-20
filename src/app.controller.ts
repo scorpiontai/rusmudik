@@ -1,12 +1,19 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Users } from './Users/users.dto';
 
-@Controller()
+@Controller("api")
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService) { }
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Post("/signup")
+  async LoginPost(@Body() body: Users): Promise<any> {
+    try {
+      const { name, password, email } = body
+
+      //this action
+    } catch (error) {
+      console.error(error.message)
+    }
   }
 }
